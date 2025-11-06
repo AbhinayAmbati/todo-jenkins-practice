@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import config from "./config";
 
 const Todo = () => {
   const [todos, setTodos] = useState([]);
@@ -10,7 +9,9 @@ const Todo = () => {
   const [editId, setEditId] = useState(null);
   const [editForm, setEditForm] = useState({ title: "", description: "" });
 
-  const API = config.url;
+  const config = import.meta.env.VITE_API_URL;
+
+  const API = config;
 
   const fetchTodos = async () => {
     setLoading(true);
